@@ -7,6 +7,8 @@ PyTorch re-implementation of [Real-time Scene Text Detection with Differentiable
 ### Difference between thesis and this implementation
 //TODO
 1. We try the network on Manga109 dataset for manga text detection
+2. Use MobileNetv2 as backbone for dbnet.
+3. Concatenate a Unet after FPN head (TODO)
 
 ### Introduction
 Mainly reimplement from :
