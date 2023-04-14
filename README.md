@@ -6,6 +6,7 @@ PyTorch re-implementation of [Real-time Scene Text Detection with Differentiable
 
 ### Difference between thesis and this implementation
 //TODO
+1. We try the network on Manga109 dataset for manga text detection
 
 ### Introduction
 Mainly reimplement from :
@@ -36,7 +37,9 @@ The features are summarized blow:
  
 ### Download
 
-1. ShuffleNet_V2 Models trained on ICDAR 2013+2015 (training set) 
+1. ShuffleNet_V2 Models trained on Manga109 dataset (training set) 
+
+2. MobileNet_V2 Models trained on Manga109 dataset (training set) 
 
 https://pan.baidu.com/s/1Um0wzbTFjJC0jdJ703GR7Q
 
