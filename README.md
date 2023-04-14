@@ -18,7 +18,7 @@ Also thanks to these project:
 
 The features are summarized blow:
 
-+ Use **resnet18/resnet50/shufflenetV2** as backbone.  
++ Use **resnet18/resnet50/shufflenetV2/mobilenetV2** as backbone.  
 
 ### Contents
 
