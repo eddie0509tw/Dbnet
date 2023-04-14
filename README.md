@@ -5,16 +5,7 @@ PyTorch re-implementation of [Real-time Scene Text Detection with Differentiable
 <img src="https://github.com/SURFZJY/Real-time-Text-Detection/blob/master/demo/dbnet.png" alt="contour" >
 
 ### Difference between thesis and this implementation
-
-1. Use dice loss instead of BCE(binary cross-entropy) loss.
-
-2. Use normal convolution rather than deformable convolution in the backbone network.
-
-3. The architecture of the backbone network is a simple FPN.
-
-4. Have not implement OHEM.
-
-5. The ground truth of the threshold map is constant 1 rather than 'the distance to the closest segment'.
+//TODO
 
 ### Introduction
 Mainly reimplement from :
