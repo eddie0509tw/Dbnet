@@ -17,11 +17,12 @@ PyTorch re-implementation of [Real-time Scene Text Detection with Differentiable
 5. The ground truth of the threshold map is constant 1 rather than 'the distance to the closest segment'.
 
 ### Introduction
+Mainly reimplement from :
+- https://github.com/SURFZJY/Real-time-Text-Detection-DBNet/tree/b76ee8d840b1fcebf7b9545402907416c7daf24e 
 
-thanks to these project:
+Also thanks to these project:
 
 - https://github.com/WenmuZhou/PAN.pytorch
-- https://github.com/SURFZJY/Real-time-Text-Detection-DBNet/tree/b76ee8d840b1fcebf7b9545402907416c7daf24e (Mainly reimplementation from this project
 - https://github.com/d-li14/mobilenetv2.pytorch/tree/1733532bd43743442077326e1efc556d7cfd025d
 
 The features are summarized blow:
