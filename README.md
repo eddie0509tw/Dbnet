@@ -21,6 +21,8 @@ PyTorch re-implementation of [Real-time Scene Text Detection with Differentiable
 thanks to these project:
 
 - https://github.com/WenmuZhou/PAN.pytorch
+- https://github.com/SURFZJY/Real-time-Text-Detection-DBNet/tree/b76ee8d840b1fcebf7b9545402907416c7daf24e (Mainly reimplementation from this project
+- https://github.com/d-li14/mobilenetv2.pytorch/tree/1733532bd43743442077326e1efc556d7cfd025d
 
 The features are summarized blow:
 
@@ -76,8 +78,5 @@ python eval.py
 
 ### Examples
 
-<img src="https://github.com/SURFZJY/Real-time-Text-Detection/blob/master/demo/contour.png" width = "200" height = "300" alt="contour" >
-
-<img src="https://github.com/SURFZJY/Real-time-Text-Detection/blob/master/demo/bbox.png" width = "200" height = "300" alt="bbox" >
 
 
