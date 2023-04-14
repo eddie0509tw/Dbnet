@@ -80,24 +80,4 @@ python eval.py
 
 <img src="https://github.com/SURFZJY/Real-time-Text-Detection/blob/master/demo/bbox.png" width = "200" height = "300" alt="bbox" >
 
-### Todo
 
-- [ ] MobileNet backbone
-
-- [ ] Deformable convolution
-
-- [ ] tensorboard support
-
-- [ ] FPN --> Architecture in the thesis
-
-- [ ] Dice Loss --> BCE Loss
-
-- [ ] threshold map gt use 1 --> threshold map gt use distance （Use 1 will accelerate the label generation）
-
-- [ ] OHEM 
-
-- [ ] OpenCV_DNN inference API for CPU machine
-
-- [ ] Caffe version (for deploying with MNN/NCNN)
-
-- [ ] ICDAR13 / ICDAR15 / CTW1500 / MLT2017 / Total-Text 
