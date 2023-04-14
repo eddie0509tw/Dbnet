@@ -4,6 +4,7 @@ from __future__ import print_function
 import os
 from utils import load_json
 
+
 config = load_json('config.json')
 os.environ['CUDA_VISIBLE_DEVICES'] = ','.join([str(i) for i in config['trainer']['gpus']])
 
@@ -20,9 +21,10 @@ def main(config):
     model = get_model(config)
 
     trainer = Trainer(config=config,
-                      model=model,
-                      criterion=criterion,
-                      train_loader=train_loader)
+                        model=model,
+                        criterion=criterion,
+                        train_loader=train_loader)
+
     trainer.train()
 
 

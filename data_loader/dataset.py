@@ -5,7 +5,11 @@ import numpy as np
 from PIL import Image
 from torch.utils.data import Dataset, DataLoader
 from data_loader.data_utils import image_label
+#from data_utils import image_label
+
+
 from utils import order_points_clockwise
+#from util import order_points_clockwise
 
 
 class ImageDataset(Dataset):
@@ -50,9 +54,13 @@ class ImageDataset(Dataset):
         text_tags = []
         with open(label_path, encoding='utf-8', mode='r') as f:
             for line in f.readlines():
+                #params = line.strip().split(',')
+
                 params = line.strip().strip('\ufeff').strip('\xef\xbb\xbf').split(',')
+                print(params)
                 try:
                     box = order_points_clockwise(np.array(list(map(float, params[:8]))).reshape(-1, 2))
+                    print(box)
                     if cv2.arcLength(box, True) > 0:
                         boxes.append(box)
                         label = params[8]
@@ -135,14 +143,15 @@ class Batch_Balanced_Dataset(object):
 
 if __name__ == '__main__':
     import torch
-    from utils.util import show_img
+    #from utils.util import show_img
+    from util import show_img
     from tqdm import tqdm
     import matplotlib.pyplot as plt
     from torchvision import transforms
 
     train_data = ImageDataset(
         data_list=[
-            (r'/home1/surfzjy/data/ic13/train_images/100.jpg', '/home1/surfzjy/data/ic13/train_gts/100.txt')],
+            (r'C:\\Users\\eddie\\CIS519\\ic15\\train_img\\img_8.jpg', 'C:\\Users\\eddie\\CIS519\\ic15\\train_txt\\gt_img_8.txt')],
         input_size=640,
         img_channel=3,
         shrink_ratio=0.4,
@@ -163,9 +172,11 @@ if __name__ == '__main__':
         print(label[0][-1].sum())
         print(mask[0].shape)
         # pbar.update(1)
+        show_img(img[0])
         show_img(label[0])
         # show_img(mask[0] * 255)
         show_img(G_d[0] * 255)
         plt.show() 
+        cv2.waitKey(0)
 
     pbar.close()

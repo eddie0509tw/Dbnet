@@ -1,0 +1,5 @@
+[default]
+entity = eddie880509
+project = dbnet
+base_url = https://api.wandb.ai
+

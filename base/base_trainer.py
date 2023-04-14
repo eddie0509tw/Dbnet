@@ -31,11 +31,18 @@ class BaseTrainer:
         self.criterion = criterion
         # logger and tensorboard
         self.tensorboard_enable = self.config['trainer']['tensorboard']
+        self.wandb_enable = self.config['trainer']['wandb']
         self.epochs = self.config['trainer']['epochs']
         self.display_interval = self.config['trainer']['display_interval']
         if self.tensorboard_enable:
             from torch.utils.tensorboard import SummaryWriter
             self.writer = SummaryWriter(self.save_dir)
+        if self.wandb_enable:
+            import wandb
+            wandb_project = self.config['trainer']['wandb_project']
+            wandb_run = self.config['trainer']['wandb_run_name']
+            wandb.init(project=wandb_project, name=wandb_run)
+            wandb.config.update(self.config)
 
         self.logger = setup_logger(os.path.join(self.save_dir, 'train_log'))
         self.logger.info(pformat(self.config))

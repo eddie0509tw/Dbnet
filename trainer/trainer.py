@@ -104,6 +104,9 @@ class Trainer(BaseTrainer):
                                                  padding=20,
                                                  pad_value=1)
                     self.writer.add_image('TRAIN/preds', show_pred, self.global_step)
+        if self.wandb_enable:
+            import wandb
+            wandb.log({'train_loss': train_loss / self.train_loader_len, 'lr': lr, 'time': time.time() - epoch_start, 'epoch': epoch})
 
         return {'train_loss': train_loss / self.train_loader_len, 'lr': lr, 'time': time.time() - epoch_start,
                 'epoch': epoch}

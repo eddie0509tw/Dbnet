@@ -6,6 +6,7 @@ import pyclipper
 import numpy as np
 import cv2
 from data_loader.augment import DataAugment
+#from augment import DataAugment
 
 data_aug = DataAugment()
 
@@ -155,7 +156,11 @@ if __name__ == '__main__':
     poly = np.array([377,117,463,117,465,130,378,130]).reshape(-1,2)
     print(poly)
     print(poly.shape) #(4,2)
+    #cv2.imshow("poly",poly.astype(np.uint8))
+    #cv2.waitKey(0)
     shrink_ratio = 0.5
+    print("contour",cv2.contourArea(poly))
+    print("arcLength",cv2.arcLength(poly, True))
     d_i = cv2.contourArea(poly) * (1 - shrink_ratio) / cv2.arcLength(poly, True) + 0.5
     pco = pyclipper.PyclipperOffset()
     pco.AddPath(poly, pyclipper.JT_ROUND, pyclipper.ET_CLOSEDPOLYGON)

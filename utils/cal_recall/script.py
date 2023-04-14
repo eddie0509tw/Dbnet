@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 from collections import namedtuple
 from . import rrc_evaluation_funcs
-import Polygon as plg
+#import Polygon as plg
+import shapely.geometry as plg
 import numpy as np
 
 
@@ -13,8 +14,8 @@ def default_evaluation_params():
     return {
         'IOU_CONSTRAINT': 0.5,
         'AREA_PRECISION_CONSTRAINT': 0.5,
-        'GT_SAMPLE_NAME_2_ID': 'gt_img_([0-9]+).txt',
-        'DET_SAMPLE_NAME_2_ID': 'res_img_([0-9]+).txt',
+        'GT_SAMPLE_NAME_2_ID': '.+_([0-9]+).txt',
+        'DET_SAMPLE_NAME_2_ID': 'res_.+_([0-9]+).txt',
         'LTRB': False,  # LTRB:2points(left,top,right,bottom) or 4 points(x1,y1,x2,y2,x3,y3,x4,y4)
         'CRLF': False,  # Lines are delimited by Windows CRLF format
         'CONFIDENCES': False,  # Detections must include confidence value. AP will be calculated
@@ -90,8 +91,8 @@ def evaluate_method(gtFilePath, submFilePath, evaluationParams):
         return points
 
     def get_union(pD, pG):
-        areaA = pD.area();
-        areaB = pG.area();
+        areaA = pD.area;
+        areaB = pG.area;
         return areaA + areaB - get_intersection(pD, pG);
 
     def get_intersection_over_union(pD, pG):
@@ -102,9 +103,9 @@ def evaluate_method(gtFilePath, submFilePath, evaluationParams):
 
     def get_intersection(pD, pG):
         pInt = pD & pG
-        if len(pInt) == 0:
+        if pInt.is_empty:
             return 0
-        return pInt.area()
+        return pInt.area
 
     def compute_ap(confList, matchList, numGtCare):
         correct = 0
@@ -221,7 +222,7 @@ def evaluate_method(gtFilePath, submFilePath, evaluationParams):
                     for dontCarePol in gtDontCarePolsNum:
                         dontCarePol = gtPols[dontCarePol]
                         intersected_area = get_intersection(dontCarePol, detPol)
-                        pdDimensions = detPol.area()
+                        pdDimensions = detPol.area
                         precision = 0 if pdDimensions == 0 else intersected_area / pdDimensions
                         if (precision > evaluationParams['AREA_PRECISION_CONSTRAINT']):
                             detDontCarePolsNum.append(len(detPols) - 1)

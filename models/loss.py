@@ -5,6 +5,7 @@ import torch
 from torch import nn
 import numpy as np
 import cv2
+import torchvision.transforms as transforms
 
 # import torchsnooper  ## for debug
 
@@ -78,6 +79,7 @@ class DBLoss(nn.Module):
         :return:
         '''
         eps = 1e-5
+     
         intersection = torch.sum(gt_cls * pred_cls * training_mask)
         union = torch.sum(gt_cls * training_mask) + torch.sum(pred_cls * training_mask) + eps
         loss = 1. - (2 * intersection / union)

@@ -4,6 +4,7 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 from models.modules import *
+#from modules import *
 
 backbone_dict = {'resnet18': {'models': resnet18, 'out': [64, 128, 256, 512]},
                  'resnet34': {'models': resnet34, 'out': [64, 128, 256, 512]},
@@ -12,7 +13,8 @@ backbone_dict = {'resnet18': {'models': resnet18, 'out': [64, 128, 256, 512]},
                  'resnet152': {'models': resnet152, 'out': [256, 512, 1024, 2048]},
                  'resnext50_32x4d': {'models': resnext50_32x4d, 'out': [256, 512, 1024, 2048]},
                  'resnext101_32x8d': {'models': resnext101_32x8d, 'out': [256, 512, 1024, 2048]},
-                 'shufflenetv2': {'models': shufflenet_v2_x1_0, 'out': [24, 116, 232, 464]}
+                 'shufflenetv2': {'models': shufflenet_v2_x1_0, 'out': [24, 116, 232, 464]},
+                 'mobilenetv2': {'models': mobilenet_v2_x1_0, 'out': [24, 40, 160, 160]}
                  }
 
 segmentation_head_dict = {'FPN': FPN, 'FPEM_FFM': FPEM_FFM}
@@ -50,17 +52,18 @@ class Model(nn.Module):
 
 
 if __name__ == '__main__':
-    device = torch.device('cuda:0')
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    print(device)
     x = torch.zeros(1, 3, 640, 640).to(device)
 
     model_config = {
-        'backbone': 'shufflenetv2',
+        'backbone': 'mobilenetv2',
         'fpem_repeat': 2,  # fpem模块重复的次数
-        'pretrained': True,  # backbone 是否使用imagesnet的预训练模型
+        'pretrained': False,  # backbone 是否使用imagesnet的预训练模型
         'segmentation_head': 'FPN'  # 分割头，FPN or FPEM_FFM
     }
     model = Model(model_config=model_config).to(device)
     y = model(x)
 
-    # print(model)
-    # torch.save(model.state_dict(), 'PAN.pth')
+    print(model)
+    #torch.save(model.state_dict(), 'PAN.pth')

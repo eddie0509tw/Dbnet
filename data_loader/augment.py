@@ -19,10 +19,10 @@ def show_pic(img, bboxes=None, name='pic'):
     if not isinstance(bboxes, np.ndarray):
         bboxes = np.array(bboxes)
     for point in bboxes.astype(np.int):
-        cv2.line(show_img, tuple(point[0]), tuple(point[1]), (255, 0, 0), 2)
-        cv2.line(show_img, tuple(point[1]), tuple(point[2]), (255, 0, 0), 2)
-        cv2.line(show_img, tuple(point[2]), tuple(point[3]), (255, 0, 0), 2)
-        cv2.line(show_img, tuple(point[3]), tuple(point[0]), (255, 0, 0), 2)
+        cv2.line(show_img, tuple([point[0],point[0]]), tuple([point[1],point[1]]), (255, 0, 0), 2)
+        cv2.line(show_img, tuple([point[1],point[1]]), tuple([point[2],point[2]]), (255, 0, 0), 2)
+        cv2.line(show_img, tuple([point[2],point[2]]), tuple([point[3],point[3]]), (255, 0, 0), 2)
+        cv2.line(show_img, tuple([point[3],point[3]]), tuple([point[0],point[0]]), (255, 0, 0), 2)
     # cv2.namedWindow(name, 0)  # 1表示原图
     # cv2.moveWindow(name, 0, 0)
     # cv2.resizeWindow(name, 1200, 800)  # 可视化的图片大小
@@ -218,6 +218,7 @@ class DataAugment():
         print('随机尺度缩放')
         t_im, t_text_polys = self.random_scale(im, text_polys, [0.5, 1, 2, 3])
         print(t_im.shape, t_text_polys.dtype)
+        print(t_text_polys)
         show_pic(t_im, t_text_polys, 'random_scale')
 
         print('随机旋转')
@@ -246,3 +247,35 @@ class DataAugment():
         print(t_im.shape)
         show_pic(t_im, text_polys, 'add_noise')
         show_pic(im, text_polys, 'add_noise_ori')
+
+if __name__ == '__main__':
+    path = r'C:\Users\eddie\CIS519\Manga109s_released_2021_12_30\images\Hamlet\034.jpg'
+
+    txt_path = r'C:\Users\eddie\CIS519\mangatxt\Hamlet_gt_img_34.txt'
+    txt_list = []
+
+    with open(txt_path, 'r', encoding="utf-8") as f:
+         
+        for line in f.readlines(): 
+
+            pagename = line.strip()
+
+            txt_list.append(pagename )
+
+
+    f.close()  
+    # Using cv2.imread() method
+    img = cv2.imread(path)
+    poly = txt_list[0].split(',')[0:8]
+    res = np.array([eval(i) for i in poly]).astype(np.float64)
+    # Displaying the image
+    cv2.imshow('image', img)
+    img_arr = np.array(img).astype(np.float64)
+
+    out = np.array([[117,75,631,556]]).astype(np.float64)
+    print(out[0,0])
+    print(tuple([2.3,2.1]))
+    dg = DataAugment()
+    dg.test(img_arr,out)
+
+    #cv2.waitKey(0)

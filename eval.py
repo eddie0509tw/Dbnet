@@ -41,12 +41,14 @@ def main(model_path, img_folder, save_path, gpu_id):
 
 
 if __name__ == '__main__':
-    os.environ['CUDA_VISIBLE_DEVICES'] = str('1')
+    os.environ['CUDA_VISIBLE_DEVICES'] = str('0')
     scale = 4
-    model_path = './output/DB_shufflenetv2_FPN/checkpoint/DBNet_best_loss.pth'
-    img_path = '/home1/surfzjy/data/ic13/test_images'
-    gt_path = '/home1/surfzjy/data/ic13/test_gts_gt_version'
-    save_path = model_path.replace('checkpoint/DBNet_best_loss.pth', 'result_eval/')
+    model_path = 'C:\\Users\\eddie\\CIS519\\Real-time-Text-Detection-DBNet\\output\\DB_shufflenetv2_FPN\\checkpoint\\DBNet_best_loss_baseline.pth'
+    img_path = 'C:\\Users\\eddie\\CIS519\\manga_processed_0402\\test\\images'
+    gt_path = 'C:\\Users\\eddie\\CIS519\\manga_processed_0402\\test\\mangatxt'
+    save_path = model_path.replace('checkpoint\\DBNet_best_loss_baseline.pth', 'result_eval\\')
+    #save_path = "C:\\Users\\eddie\\CIS519\\Real-time-Text-Detection-DBNet\\output\\DB_shufflenetv2_FPN\\result_eval\\"
+    print(save_path)
     save_path = main(model_path, img_path, save_path, gpu_id = 0)
     result = cal_recall_precison_f1(gt_path=gt_path, result_path=save_path)
     print(result)

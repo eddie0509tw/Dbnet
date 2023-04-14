@@ -40,13 +40,15 @@ def get_txts(txt_path):
     return sorted(files)    
 
 if __name__ == '__main__':
-    img_path = '/home1/surfzjy/data/ICDAR-13and15/train_data'
+    #img_path = '/home1/surfzjy/data/ICDAR-13and15/train_data'
+    img_path = "C:\\Users\\eddie\\CIS519\\manga_processed_0402\\train\\images"
     files = get_images(img_path)
-    txt_path = '/home1/surfzjy/data/ICDAR-13and15/train_data'
+    #txt_path = '/home1/surfzjy/data/ICDAR-13and15/train_data'
+    txt_path = "C:\\Users\\eddie\\CIS519\\manga_processed_0402\\train\\mangatxt"
     txts = get_txts(txt_path)
     n = len(files)
     assert len(files) == len(txts)
-    with open('dataset_ic13and15_train.txt', 'w') as f:
+    with open('manga109_train.txt', 'w') as f:
         for i in range(n):
             line = files[i] + '\t' + txts[i] + '\n'
             f.write(line)

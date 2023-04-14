@@ -87,8 +87,11 @@ def load_folder_file(file, fileNameRegExp='', allEntries=False):
     for name in os.listdir(file):
         addFile = True
         keyName = name
+        print(name)
+        print(fileNameRegExp)
         if fileNameRegExp != "":
             m = re.match(fileNameRegExp, name)
+            print(m)
             if m == None:
                 addFile = False
             else:
@@ -96,7 +99,7 @@ def load_folder_file(file, fileNameRegExp='', allEntries=False):
                     keyName = m.group(1)
 
         if addFile:
-            pairs.append([keyName, open(os.path.join(file,name)).read()])
+            pairs.append([keyName, open(os.path.join(file,name),encoding="utf-8").read()])
         else:
             if allEntries:
                 raise Exception('ZIP entry not valid: %s' % name)

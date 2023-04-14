@@ -112,12 +112,12 @@ class Pytorch_model:
 if __name__ == '__main__':
     from utils.util import show_img, draw_bbox
 
-    os.environ["CUDA_VISIBLE_DEVICES"] = "2"
-    model_path = './output/DB_shufflenetv2_FPN/checkpoint/DBNet_best_loss.pth'    
+    os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+    model_path = 'C:\\Users\\eddie\\CIS519\\Real-time-Text-Detection-DBNet\\output\\DB_shufflenetv2_FPN\\checkpoint\\DBNet_best_loss.pth'    
     
     ## icdar 2013 / 2015
-    img_id = 130
-    img_path = '/home1/surfzjy/data/ic13/test_images/img_{}.jpg'.format(img_id)
+    img_id = 46
+    img_path = 'C:\\Users\\eddie\\CIS519\\manga_processed_0402\\test\\images\\Akuhamu_0{}.jpg'.format(img_id)
     
     # 初始化网络
     model = Pytorch_model(model_path, gpu_id = 0)  ## set GPU id or None if you only have cpu

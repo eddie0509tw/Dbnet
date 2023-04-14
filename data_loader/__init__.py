@@ -5,6 +5,7 @@ from torchvision import transforms
 import copy
 import pathlib
 from . import dataset
+#import dataset
 
 
 def get_datalist(train_data_path, validation_split=0.1):
@@ -52,7 +53,7 @@ def get_dataloader(module_name, module_args):
 
     # 创建数据集
     dataset_args = copy.deepcopy(module_args['dataset'])
-    train_data_path = dataset_args.pop('train_data_path')
+    train_data_path = dataset_args.pop('train_data_path') # "./dataset_ic13and15_train.txt"
     train_data_ratio = dataset_args.pop('train_data_ratio')
     dataset_args.pop('val_data_path')
     train_data_list = get_datalist(train_data_path, module_args['loader']['validation_split'])
@@ -64,11 +65,13 @@ def get_dataloader(module_name, module_args):
                                               dataset_args=dataset_args))
 
     if len(train_dataset_list) > 1:
+        
         train_loader = dataset.Batch_Balanced_Dataset(dataset_list=train_dataset_list,
                                                       ratio_list=train_data_ratio,
                                                       module_args=module_args,
                                                       phase='train')
     elif len(train_dataset_list) == 1:
+        
         train_loader = DataLoader(dataset=train_dataset_list[0],
                                   batch_size=module_args['loader']['train_batch_size'],
                                   shuffle=module_args['loader']['shuffle'],
@@ -77,3 +80,15 @@ def get_dataloader(module_name, module_args):
     else:
         raise Exception('no images found')
     return train_loader
+
+if __name__ == '__main__': 
+    from util import load_json
+
+    config = load_json('config.json')
+
+    train_data_path = config["data_loader"]["args"]["dataset"]["train_data_path"]
+    test_list = get_datalist(train_data_path, validation_split=0.1)
+    print(test_list[0][0:10])
+    img_path= pathlib.Path("C:\\Users\\eddie\\CIS519\\manga_processed\\train\\mangatxt\\ARMS_000.txt")
+    print(img_path)
+    print(img_path.stat())
