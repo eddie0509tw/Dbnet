@@ -4,7 +4,7 @@ PyTorch re-implementation of [Real-time Scene Text Detection with Differentiable
 
 <img src="https://github.com/SURFZJY/Real-time-Text-Detection/blob/master/demo/dbnet.png" alt="contour" >
 
-### Difference between thesis and this implementation
+### Difference between previous project and this implementation
 //TODO
 1. We try the network on Manga109 dataset for manga text detection
 2. Try MobileNetv2 and MobileNetV3(Large) as backbone for dbnet.
