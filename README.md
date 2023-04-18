@@ -17,7 +17,8 @@ Mainly reimplement from :
 Also thanks to these project:
 
 - https://github.com/WenmuZhou/PAN.pytorch
-- https://github.com/d-li14/mobilenetv2.pytorch/tree/1733532bd43743442077326e1efc556d7cfd025d
+- https://github.com/d-li14/mobilenetv2.pytorch
+- https://github.com/d-li14/mobilenetv3.pytorch
 
 The features are summarized blow:
 
