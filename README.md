@@ -52,7 +52,7 @@ or https://mega.nz/#!WdhxXAxT!oGURvmbQFqTHu5hljUPdbDMzI75_UO2iWLaXX5dJrDw
 
 ### Train
 
-1. modify genText.py to generate txt list file for training/testing data
+1. Go to manga process to generate txt list file for training/testing data
 
 2. modify config.json
 
