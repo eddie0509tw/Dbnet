@@ -12,7 +12,7 @@ PyTorch re-implementation of [Real-time Scene Text Detection with Differentiable
 
 ### Introduction
 Mainly reimplement from :
-- https://github.com/SURFZJY/Real-time-Text-Detection-DBNet/tree/b76ee8d840b1fcebf7b9545402907416c7daf24e 
+- https://github.com/SURFZJY/Real-time-Text-Detection-DBNet
 
 Also thanks to these project:
 
