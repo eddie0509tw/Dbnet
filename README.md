@@ -21,7 +21,7 @@ Also thanks to these project:
 
 The features are summarized blow:
 
-+ Use **resnet18/resnet50/shufflenetV2/mobilenetV2** as backbone.  
++ Use **resnet18/resnet50/shufflenetV2/mobilenetV2andV3** as backbone.  
 
 ### Contents
 
@@ -42,6 +42,8 @@ The features are summarized blow:
 1. ShuffleNet_V2 Models trained on Manga109 dataset (training set) 
 
 2. MobileNet_V2 Models trained on Manga109 dataset (training set) 
+
+3. MobileNet_V3_Large Models trained on Manga109 dataset (training set)
 
 https://pan.baidu.com/s/1Um0wzbTFjJC0jdJ703GR7Q
 
