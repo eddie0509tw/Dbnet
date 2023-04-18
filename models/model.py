@@ -14,7 +14,8 @@ backbone_dict = {'resnet18': {'models': resnet18, 'out': [64, 128, 256, 512]},
                  'resnext50_32x4d': {'models': resnext50_32x4d, 'out': [256, 512, 1024, 2048]},
                  'resnext101_32x8d': {'models': resnext101_32x8d, 'out': [256, 512, 1024, 2048]},
                  'shufflenetv2': {'models': shufflenet_v2_x1_0, 'out': [24, 116, 232, 464]},
-                 'mobilenetv2': {'models': mobilenet_v2_x1_0, 'out': [24, 40, 160, 160]}
+                 'mobilenetv2': {'models': mobilenet_v2_x1_0, 'out': [24, 32, 64, 96]},
+                 'MobileNetV3_Large': {'models': MobileNetV3_Large, 'out': [24, 40, 160, 160]}
                  }
 
 segmentation_head_dict = {'FPN': FPN, 'FPEM_FFM': FPEM_FFM}

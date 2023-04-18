@@ -57,10 +57,10 @@ class ImageDataset(Dataset):
                 #params = line.strip().split(',')
 
                 params = line.strip().strip('\ufeff').strip('\xef\xbb\xbf').split(',')
-                print(params)
+                #print(params)
                 try:
                     box = order_points_clockwise(np.array(list(map(float, params[:8]))).reshape(-1, 2))
-                    print(box)
+                    #print(box)
                     if cv2.arcLength(box, True) > 0:
                         boxes.append(box)
                         label = params[8]

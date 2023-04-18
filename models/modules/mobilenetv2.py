@@ -66,7 +66,7 @@ class InvertedResidual(nn.Module):
             )
 
         self.downsample = nn.Sequential(
-            nn.Conv2d(inp, oup, kernel_size=1, stride=stride, bias=False),
+            nn.Conv2d(inp, oup, kernel_size = 1, stride = stride , bias=False),
             nn.BatchNorm2d(oup),
         )
 
@@ -87,14 +87,14 @@ class MobileNetV2(nn.Module):
     def __init__(self,  stages_repeats, stages_out_channels, num_classes=1000, width_mult=1.):
         super(MobileNetV2, self).__init__()
 
-        if len(stages_repeats) != 5:
+        if len(stages_repeats) != 7:
             raise ValueError('expected stages_repeats as list of 4 positive ints')
-        if len(stages_out_channels) != 6:
+        if len(stages_out_channels) != 9:
             raise ValueError('expected stages_out_channels as list of 5 positive ints')
         self._stage_out_channels = stages_out_channels
 
-        self.tlist = [1,6,6,6,6]
-        self.slist = [1,2,2,2,1]
+        self.tlist = [1,6,6,6,6,6,6,6]
+        self.slist = [1,2,2,2,1,2,1,1]
 
         input_channels = 3
         output_channels = self._stage_out_channels[0] # 32
@@ -108,7 +108,7 @@ class MobileNetV2(nn.Module):
         input_channels = output_channels
 
 
-        stage_names = ['stage{}'.format(i) for i in [2, 3, 4, 5, 6]]
+        stage_names = ['stage{}'.format(i) for i in [2, 3, 4, 5, 6,7,8,9]]
         for name, repeats, output_channels, t, s in zip(
                 stage_names, stages_repeats, self._stage_out_channels[1:], self.tlist, self.slist):
             
@@ -142,6 +142,7 @@ class MobileNetV2(nn.Module):
         c4 = self.stage4(c3)
         c5 = self.stage5(c4)
         c6 = self.stage6(c5)
+        
         #c7 = self.stage7(c6)
         #c8 = self.stage8(c7)
         #c9 = self.conv9(c8)
@@ -172,7 +173,7 @@ def mobilenet_v2_x1_0(pretrained=False, progress=True, **kwargs):
 
     Args:
         pretrained (bool): If True, returns a model pre-trained on ImageNet
-        progress (bool): If True, displays a progress bar of the download to stderr
+        progress (bool): If True, displays a progress bsar of the download to stderr
     """
     return _mobilenetv2('mobilenet_v2_x1_0', pretrained, progress,
-                         [1, 2, 3, 4, 3], [32, 16, 24, 40, 160, 160], **kwargs)
+                         [1, 2, 3, 4, 3,3,1], [32, 16, 24, 32, 64 , 96, 160, 320,1280], **kwargs)

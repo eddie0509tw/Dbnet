@@ -83,6 +83,7 @@ class FPN(nn.Module):
         # x = self.out_conv(x)
         
         x = self.pred_conv(x)
+
         return x
 
     def _upsample_add(self, x, y):
@@ -90,6 +91,9 @@ class FPN(nn.Module):
 
     def _upsample_cat(self, p2, p3, p4, p5):
         h, w = p2.size()[2:]
+        #h *= 4
+        #w *= 4
+        #p2 = F.interpolate(p2, size=(h, w), mode='bilinear', align_corners=True)
         p3 = F.interpolate(p3, size=(h, w), mode='bilinear', align_corners=True)
         p4 = F.interpolate(p4, size=(h, w), mode='bilinear', align_corners=True)
         p5 = F.interpolate(p5, size=(h, w), mode='bilinear', align_corners=True)
