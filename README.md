@@ -1,4 +1,4 @@
-# Real-time-Text-Detection
+# CIS 519 Applied Machine Learning Final Project :Manga Text Detection
 
 PyTorch re-implementation of [Real-time Scene Text Detection with Differentiable Binarization](https://arxiv.org/abs/1911.08947)
 
@@ -11,7 +11,7 @@ PyTorch re-implementation of [Real-time Scene Text Detection with Differentiable
 3. Concatenate a Unet after FPN head (TODO)
 
 ### Introduction
-Mainly reimplement from :
+Mainly reimplement and inherit from :
 - https://github.com/SURFZJY/Real-time-Text-Detection-DBNet
 
 Also thanks to these project:
