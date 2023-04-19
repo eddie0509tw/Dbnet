@@ -63,7 +63,7 @@ class FPN(nn.Module):
         
         self.pred_conv = nn.Sequential(
             nn.Conv2d(conv_out, 2, kernel_size=1, stride=1, padding=0),
-            nn.Sigmoid()
+            #nn.Sigmoid()
         )        
 
     def forward(self, x):
@@ -83,6 +83,7 @@ class FPN(nn.Module):
         # x = self.out_conv(x)
         
         x = self.pred_conv(x)
+
 
         return x
 
