@@ -19,20 +19,21 @@
             },
             "loader": {
                 "validation_split": 0.1,
-                "train_batch_size": 5,
+                "train_batch_size": 10,
                 "shuffle": true,
                 "pin_memory": false,
-                "num_workers": 1
+                "num_workers": 8
             }
         }
     },
     "arch": {
         "type": "DBModel",
         "args": {
-            "backbone": "mobilenetv2",
+            "backbone": "resnet18",
             "fpem_repeat": 2,
             "pretrained": false,
-            "segmentation_head": "FPN"
+            "segmentation_head": "FPN",
+            "afterburner": "UNET"
         }
     },
     "loss": {
@@ -71,7 +72,7 @@
         "tensorboard": false,
 		"wandb": true,
 		"wandb_project": "dbnet",
-		"wandb_run_name": "mobilenetv2_adam_1e-3_CosineAnnealingLR",
+		"wandb_run_name": "ResNet18_UNET_adam_1e-3_CosineAnnealingLR",
         "metrics": "loss"
     }
 }
