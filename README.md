@@ -23,6 +23,8 @@ Also thanks to these project:
 The features are summarized blow:
 
 + Use **resnet18/resnet50/shufflenetV2/mobilenetV2andV3** as backbone.  
++ Use **Unet** as afterburner.  
+
 
 ### Contents
 
